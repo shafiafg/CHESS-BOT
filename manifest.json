@@ -1,0 +1,41 @@
+{
+  "manifest_version": 3,
+  "name": "Project Chess Bot",
+  "version": "3.0",
+  "description": "Locally hosted Stockfish engine for Chess.com analysis with improved reliability and humanization.",
+  "permissions": ["storage", "activeTab", "scripting", "offscreen"],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self' 'wasm-unsafe-eval'; object-src 'self'"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.chess.com/*"],
+      "js": ["elo_config.js", "engine.js", "automation.js", "ui.js", "content.js"],
+      "css": ["overlay.css"]
+    }
+  ],
+  "icons": {
+    "16": "icon.svg",
+    "48": "icon.svg",
+    "128": "icon.svg"
+  },
+  "host_permissions": [
+    "*://*.chess.com/*",
+    "*://*.lichess.org/*"
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "offscreen.html",
+        "offscreen.js",
+        "stockfish.js",
+        "stockfish.wasm",
+        "page_script.js"
+      ],
+      "matches": ["*://*.chess.com/*"]
+    }
+  ]
+}
