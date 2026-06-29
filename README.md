@@ -24,3 +24,6 @@ Refer to the LICENSE file for details.
 
 ## upd (v3.01)
 can now be used in puzzles(only as white) 
+
+test
+
